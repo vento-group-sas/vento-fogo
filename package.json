@@ -5,8 +5,13 @@
   "scripts": {
     "dev": "next dev --port 3004",
     "build": "next build",
+    "build:ci008": "next build",
     "start": "next start --port 3004",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit --incremental false",
+    "test": "npm run test:ci008",
+    "test:ci008": "node --test scripts/quality/fogo-consumer-baseline-gate.test.mjs",
+    "ci008:baseline": "node scripts/quality/fogo-consumer-baseline-gate.mjs --packages=@vento/contracts,@vento/os-context,@vento/supabase,@vento/ui-web --json",
     "audit:i18n": "node scripts/audit-i18n.mjs"
   },
   "dependencies": {
