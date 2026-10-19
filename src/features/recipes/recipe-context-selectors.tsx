@@ -114,7 +114,10 @@ export function RecipeContextSelectors({
   };
 
   useEffect(() => {
-    setProductSearch(selectedProductLabel);
+    const frame = window.requestAnimationFrame(() => {
+      setProductSearch(selectedProductLabel);
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, [selectedProductLabel]);
 
   useEffect(() => {
